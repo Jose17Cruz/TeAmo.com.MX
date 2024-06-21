@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensaje</title>
+ <link rel="icon" type="favicon.ico" href="icons8_barcelona_fc.ico">
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000; /* Fondo negro */
+    font-family: Arial, sans-serif;
+    color: white; /* Color de texto blanco */
+    margin: 0;
+  }
+
+  .question {
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 2px 2px 5px #888888, 0 0 10px rgba(255, 255, 255, 0.8); /* Sombra y reflejo */
+    animation: color-change 5s infinite alternate;
+  }
+
+  @keyframes color-change {
+    0% { color: blue; }
+    50% { color: red; }
+    100% { color: green; }
+  }
+
+  .options {
+    position: absolute;
+    bottom: 20px; /* Colocar al final con margen */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .options button {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+    color: white; /* Color de texto blanco */
+    background-color: #333; /* Color de fondo gris oscuro */
+    border: none;
+    border-radius: 5px;
+  }
+
+  .options button:hover {
+    transform: scale(1.1);
+  }
+
+  .no {
+    animation: shake 0.5s infinite;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-20px, -20px); }
+    50% { transform: translate(20px, 20px); }
+    75% { transform: translate(-20px, -20px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* Estilos para la galería */
+  .gallery {
+    display: none; /* Ocultar inicialmente */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: url('img/pexels-eberhard-grossgasteiger-1421903.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: animate 20s linear infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(360deg);
+    }
+  }
+
+  .box span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(300px);
+    -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, rgba(0,0,0,0.4));
+  }
+
+  .box span img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+  <div class="question">¿Quieres Estar Con Migo ❤️👑 ♾️?</div>
+  <div class="options">
+    <button id="yesBtn">Sí</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <div class="gallery" id="gallery">
+    <div class="box">
+      <span style="--i: 1;"><img src="1.jpeg" alt=""></span>
+      <span style="--i: 2;"><img src="2.jpeg" alt=""></span>
+      <span style="--i: 3;"><img src="3.jpeg" alt=""></span>
+      <span style="--i: 4;"><img src="4.jpeg" alt=""></span>
+      <span style="--i: 5;"><img src="5.jpeg" alt=""></span>
+      <span style="--i: 6;"><img src="6.jpeg" alt=""></span>
+      <span style="--i: 7;"><img src="7.jpeg" alt=""></span>
+      <span style="--i: 8;"><img src="8.jpeg" alt=""></span>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('yesBtn').addEventListener('click', function() {
+      document.querySelector('.question').innerHTML = 'Yo Te amaré por siempre💐❤️💕🥺';
+      document.querySelector('.options').style.display = 'none';
+      setTimeout(() => {
+        document.querySelector('.question').style.display = 'none';
+        document.getElementById('gallery').style.display = 'flex';
+      }, 2000);
+    });
+
+    document.getElementById('noBtn').addEventListener('click', function() {
+      document.getElementById('noBtn').classList.add('no');
+      setTimeout(() => {
+        document.getElementById('noBtn').classList.remove('no');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
